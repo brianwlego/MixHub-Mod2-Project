@@ -1,0 +1,29 @@
+<h1>New Tracklist:</h1>
+
+
+<%= form_with model: @tracklist do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  <br>
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  <br>
+    <%= f.label :artist %>
+    <%= f.text_field :artist_attributes, list: "artists_autocomplete" %>
+    <datalist id= "artists_autocomplete">
+      <% @artists.each do |artist| %>
+      <option value="<%= artist.name %>">
+      <%end%>
+    </datalist>
+  <br>  
+
+    
+    <% # f.hidden_field :user, value= current_user %>
+    <% # f.hidden_field :likes %>
+  <br><br>
+  <%= f.submit %>
+<%end%>
+
+
+
+

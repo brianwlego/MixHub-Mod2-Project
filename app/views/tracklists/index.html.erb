@@ -1,0 +1,9 @@
+<h1>All Tracklists</h1>
+
+<div class = 'tracklist'> 
+    <ul>
+    <%@tracklists.each do |tracklist| %>
+        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+    <% end %>
+    </ul>
+</div>
