@@ -1,0 +1,22 @@
+<h1>Add Songs To Tracklist</h1>
+
+<div>
+  <>
+</div>
+
+<% @tracklist.songs.each do |song|%>
+  <p><%= song.title %></p>
+<%end%>
+<p>Add Songs To Your Tracklist</p>
+
+<%= form_for @song, url: tracklist_songs_path(@tracklist) do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :artist_name%>
+  <%= f.text_field :artist_name %>
+  <br>
+  <%= f.hidden_field :tracklist_id, value: @tracklist.id %>
+  <%= f.hidden_field :verified_count, value: '0' %>
+  <%= f.submit %>
+<%end%>

@@ -16,10 +16,10 @@ class TracklistsController < ApplicationController
 
     def create
       #Validation Needs to be written
-      byebug
-      @tracklist = Tracklist.create(tracklist_params)
 
-      redirect_to tracklist_path(@tracklist)
+      @tracklist = Tracklist.create(tracklist_params)
+      
+      redirect_to new_tracklist_song_path(@tracklist)
     end
 
     def edit
@@ -43,7 +43,7 @@ class TracklistsController < ApplicationController
     private
 
     def tracklist_params
-        params.require(:tracklist).permit(:name, :link, :img_url, :likes, :user_id, artist_attributes: [:name], festival_attributes: [:date, :name, :location])
+        params.require(:tracklist).permit(:name, :link, :img_url, :likes, :user_id, artist_attributes: [:name, :img_url], festival_attributes: [:date, :name, :location])
     end
 
     def find_tracklist

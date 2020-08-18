@@ -3,3 +3,11 @@
 .navbar {
     background-color: #222831 !important;
 }
+
+.navbar .brand { 
+    max-height: 40px;
+    max-width: 30%; 
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0; 
+}

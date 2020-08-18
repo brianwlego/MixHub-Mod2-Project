@@ -10,14 +10,19 @@
   <br>
     <%= f.label :img_url %>
     <%= f.text_field :img_url %>
-  <br>
-      <%= f.label :artist %>
-      <%= f.text_field :artist_id, list: "artists_autocomplete" %>
+  <br><br>
+    <h4>Artist Form</h4><br>
+    <%= f.fields_for :artist_attributes do |inner| %>
+      <%= inner.label :artist %>
+      <%= inner.text_field :name, list: "artists_autocomplete" %>
         <datalist id= "artists_autocomplete">
           <% @artists.each do |artist| %>
             <option value="<%= artist.name %>">
           <%end%>
-        </datalist>
+        </datalist><br>
+        <%= inner.label :img_url %>
+        <%= inner.text_field :img_url, placeholder:"Don't add if Artist already exists"%>
+      <%end%>
 
   <br>
 
@@ -37,7 +42,33 @@
   <br>  
   <h4>Festival Form</h4><br>
   <br>
+    <%= f.fields_for :festival_attributes do |inner| %>
+      <%= inner.label :festival %>
+      <%= inner.text_field :name, list: "festivals_autocomplete" %>
+        <datalist id= "festivals_autocomplete">
+          <% @festivals.each do |festival| %>
+            <option value="<%= festival.name %>">
+          <%end%>
+        </datalist><br>
+        <br>
+        <%= inner.label :location %>
+        <%= inner.text_field :location%>
+        <br>
+        <%= inner.label :date %>
+        <%= inner.date_field :date%>
+      <%end%>
     
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :likes, :value => "0" %>
+    <br><br>
+
+
+    <%= f.submit %>
+<%end%>
+
+
+
+    <%if false %>
     <%= f.fields_for :festival, Festival.new do |inner|%>
     <%= inner.label :name %>
     <%= inner.text_field :name %><br>
@@ -46,20 +77,8 @@
     <%= inner.label :date %>
     <%= inner.date_field :date %><br>
     <% end %>
+    <%end%>
   <br> 
-
- 
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :likes, :value => "0" %>
-  <br><br>
-
-
-  <%= f.submit %>
-<%end%>
-
- 
-
-
 
 
 <% if false %>
