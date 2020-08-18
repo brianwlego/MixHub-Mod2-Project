@@ -7,6 +7,15 @@ class SongsController < ApplicationController
 
   def show
   end
+
+  def new
+    @song = Song.new
+  end
+
+  def create
+    @song = Song.create(song_params)
+    redirect_to tracklist_path(@song.tracklist)
+  end
   
   def edit
   end

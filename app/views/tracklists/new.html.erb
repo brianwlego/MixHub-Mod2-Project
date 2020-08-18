@@ -11,6 +11,19 @@
     <%= f.label :img_url %>
     <%= f.text_field :img_url %>
   <br>
+      <%= f.label :artist %>
+      <%= f.text_field :artist_id, list: "artists_autocomplete" %>
+        <datalist id= "artists_autocomplete">
+          <% @artists.each do |artist| %>
+            <option value="<%= artist.name %>">
+          <%end%>
+        </datalist>
+
+  <br>
+
+
+
+  <% if false %>
     <h4>Artist Form</h4><br>
     <%= f.fields_for :artist, Artist.new do |inner|%>
     <%= inner.label :name %>
@@ -19,6 +32,8 @@
     <%= inner.label :img_url %>
     <%= inner.text_field :img_url %>
     <% end %>
+  <% end %>
+
   <br>  
   <h4>Festival Form</h4><br>
   <br>
@@ -41,6 +56,8 @@
 
   <%= f.submit %>
 <%end%>
+
+ 
 
 
 

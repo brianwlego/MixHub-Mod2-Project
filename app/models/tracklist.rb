@@ -5,7 +5,8 @@ class Tracklist < ApplicationRecord
   has_many :songs
 
   def artist_attributes=(artist_attributes)
-        artist = Artist.find_or_create_by(name: artist_attributes[:name])
+    byebug    
+    artist = Artist.find_or_create_by(name: artist_attributes[:name])
     self.artist = artist
   end
 
