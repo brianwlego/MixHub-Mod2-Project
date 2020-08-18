@@ -10,8 +10,8 @@ class TracklistsController < ApplicationController
 
     def new
         @tracklist = Tracklist.new
-        @artists = Artist.all
-        @festivals = Festival.all 
+        # @artists = Artist.all
+        # @festivals = Festival.all 
     end
 
     def create
@@ -19,7 +19,7 @@ class TracklistsController < ApplicationController
 
       @tracklist = Tracklist.create(tracklist_params)
 
-        redirect_to tracklist_path(@tracklist)
+      redirect_to tracklist_path(@tracklist)
     end
 
     def edit
@@ -35,18 +35,15 @@ class TracklistsController < ApplicationController
       redirect_to tracklists_path
     end
 
+    # def add_song_input_field
+    #   @song_num = 1
+    #   @song_num
+    # end
+
     private
 
     def tracklist_params
-        params.require(:tracklist).permit(
-        :name,
-        :festival_id,
-        :user_id,
-        :link,
-        :img_url,
-        :likes,
-        artist_attributes: [:name]
-        )
+        params.require(:tracklist).permit(:name, :link, :img_url, :likes, :user_id, artist_attributes: [:name, :img_url], festival_attributes: [:date, :name, :location])
     end
 
     def find_tracklist

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Tracklist Test
+f = Festival.create(name: "Ultra Miami", location: "Miami", date:2009-03-18)
+
+t = Tracklist.create(name: 'Tracklist 1', artist_id: 1, festival_id: 1, user_id: 2, link: "blahblah", img_url: "blahblahhh", likes: 0)

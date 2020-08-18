@@ -1,29 +1,57 @@
 <h1>New Tracklist:</h1>
 
 
-<%= form_with model: @tracklist do |f| %>
+<%= form_for @tracklist do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
   <br>
     <%= f.label :link %>
     <%= f.text_field :link %>
   <br>
-    <%= f.label :artist %>
-    <%= f.text_field :artist_attributes, list: "artists_autocomplete" %>
-    <datalist id= "artists_autocomplete">
-      <% @artists.each do |artist| %>
-      <option value="<%= artist.name %>">
-      <%end%>
-    </datalist>
+    <%= f.label :img_url %>
+    <%= f.text_field :img_url %>
+  <br>
+    <h4>Artist Form</h4><br>
+    <%= f.fields_for :artist, Artist.new do |inner|%>
+    <%= inner.label :name %>
+    <%= inner.text_field :name %>
+    <br>
+    <%= inner.label :img_url %>
+    <%= inner.text_field :img_url %>
+    <% end %>
   <br>  
-
+  <h4>Festival Form</h4><br>
+  <br>
     
-    <% # f.hidden_field :user, value= current_user %>
-    <% # f.hidden_field :likes %>
+    <%= f.fields_for :festival, Festival.new do |inner|%>
+    <%= inner.label :name %>
+    <%= inner.text_field :name %><br>
+    <%= inner.label :location %>
+    <%= inner.text_field :location %><br>
+    <%= inner.label :date %>
+    <%= inner.date_field :date %><br>
+    <% end %>
+  <br> 
+
+ 
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :likes, :value => "0" %>
   <br><br>
+
+
   <%= f.submit %>
 <%end%>
 
 
 
 
+<% if false %>
+  <%= f.fields_for :songs, Song.new do |song|%>
+    <% 8.times do %>
+        <%= song.text_field :title, placeholder: "Title" %><%= song.  text_field :artist_name, placeholder: "Artist Name"%><br>
+        <%= song.hidden_field :artist, value: "figure this out later"%>
+        <%= song.hidden_field :tracklist, value: @tracklist.id%>
+        <%= song.hidden_field :verified_count, :value => "0"%>
+      <%end%>
+    <% end %>
+<%end %>
