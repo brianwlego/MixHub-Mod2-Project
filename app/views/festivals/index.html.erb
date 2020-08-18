@@ -1,0 +1,11 @@
+<div class= "">
+  <h1>All Festivals</h1>
+  <div class= "">
+    <ul>
+      <% @festivals.each do |festival| %>
+        <li><%= link_to festival.name, festival_path(festival) %></li>
+        <br>
+      <% end %>
+    </ul>
+  </div>
+</div>

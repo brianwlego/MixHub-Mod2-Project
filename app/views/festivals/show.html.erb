@@ -1,0 +1,18 @@
+<h1>Artist Show Page</h1>
+
+<div class= "">
+  
+  <h3><%= @festival.name %></h3>
+  <br>
+  <h4><%= @festival.date %></h4>
+  <br>
+  <h4><%= @festival.location %></h4>
+  <div class= "">
+    <ul>
+      <% @festival.tracklists.each do |tracklist| %>
+        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+        <br>
+      <% end %>
+    </ul>
+  </div>
+</div>
