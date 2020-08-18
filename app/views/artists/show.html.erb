@@ -1,0 +1,15 @@
+<h1>Artist Show Page</h1>
+
+<div class= "">
+    <img id= "artist_image", src= <%="#{@artist.img_url}"%> , width="250", height="250", alt= "This URL Appears To Be Broken" >  
+  <h3><%= @artist.name %></h3>
+  <br><br>
+  <div class= "">
+    <ul>
+      <% @artist.tracklists.each do |tracklist| %>
+        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+        <br>
+      <% end %>
+    </ul>
+  </div>
+</div>
