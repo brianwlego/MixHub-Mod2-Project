@@ -9,20 +9,27 @@
   <br>
   
 </div>
-
-<% @tracklist.songs.each do |song|%>
-  <p><%= song.title %> Originally By:<%= song.artist_name%></p>
-<%end%>
+<div>
+  <ol>
+    <% @tracklist.songs.each do |song|%>
+        <li><%= song.title %>[<%= song.artist_name%>]  -  <%= song.start_time%></li>
+    <%end%>
+  </ol>
+</div>
 <p>Add Songs To Your Tracklist</p>
 
 <%= form_for @song, url: tracklist_songs_path(@tracklist) do |f| %>
-  <%= f.label :title%>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, placeholder: "Song Title"%>
   <br>
-  <%= f.label :artist_name%>
-  <%= f.text_field :artist_name %>
+  <%= f.text_field :artist_name, placeholder: "Original Artist of Song" %>
+  <br>
+  <%= f.text_field :start_time, placeholder: "00:00"%>
   <br>
   <%= f.hidden_field :tracklist_id, value: @tracklist.id %>
   <%= f.hidden_field :verified_count, value: '0' %>
-  <%= f.submit %>
+  <%= f.submit class:"btn btn-secondary"%>
 <%end%>
+
+<div>
+  <%= button_to "Finished Adding Songs", tracklist_path(@tracklist), method: "get", class: "btn btn-primary" %>
+</div>
