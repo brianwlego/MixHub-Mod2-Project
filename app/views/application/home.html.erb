@@ -1,6 +1,15 @@
 <h1>Welcome to MixHub!</h1>
 
+<div class= "sign_out_btn">
+    <% if user_signed_in? %>
+        <%= button_to "Sign Out", destroy_user_session_path, method: "delete", class: "btn btn-primary" %>
+    <%end%>
+</div>
 
-<% if user_signed_in? %>
-    <%= button_to "Sign Out", destroy_user_session_path, method: "delete", class: "btn btn-primary" %>
-<%end%>
+<% @recent_tracklists.each do |tracklist| %>
+
+    <h4><img src= <%="#{tracklist.img_url}"%>, width = "250", height = "250"> <%= link_to tracklist.name, tracklist_path(tracklist)%></h4>
+
+<%end%> 
+
+

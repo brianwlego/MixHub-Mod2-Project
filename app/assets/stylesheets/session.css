@@ -1,7 +1,7 @@
-body {
+body.session-stuff {
     margin: 0;
     padding: 0;
-    background-image: url("alesso_edc.jpg");
+    background-image: url("alesso_edc.jpg"); 
     height: 100vh;
   }
   #login .container #login-row #login-column #login-box {
@@ -21,5 +21,6 @@ body {
   .text-info {
       color: white !important;
   }
+
 
 

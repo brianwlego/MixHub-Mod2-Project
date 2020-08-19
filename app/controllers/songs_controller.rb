@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show, :edit, :update, :destroy]
+  before_action :find_song, only: [:show, :destroy, :add_verify]
+  before_action :signed_in, only: [:new ]
 
   def index
     @songs = Song.all
@@ -14,36 +15,44 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.create(song_params)
-
-    
-    redirect_to new_tracklist_song_path(@song.tracklist)
+    @song = Song.new(song_params)
+    if @song.valid?
+      @song.save 
+      redirect_to new_tracklist_song_path(@song.tracklist)
+    else
+      flash[:my_errors] = @song.errors.full_messages
+      redirect_to new_tracklist_song_path(@song.tracklist)
+    end
   end
   
-  def edit
-  end
-
-  def update
-    # Add Validation
-    
-    @song.update(tracklist_params(:artist, :title))
-    redirect_to song_path(@song)
-  end
 
   def destroy 
-    saved_tracklist = song.tracklist
+    saved_tracklist = @song.tracklist
     @song.destroy
-    redirect_to tracklist_path(saved_tracklist)
+    redirect_to new_tracklist_song_path(saved_tracklist)
+  end
+
+  def add_verify
+    @song.add_verification
+    @song.save 
+    redirect_to tracklist_path(@song.tracklist)
   end
 
   private
 
   def song_params
-    params.require(:song).permit(:title, :artist_id, :tracklist_id, :verified_count, :artist_name, :start_time)
+    params.require(:song).permit(:tracklist_number, :title, :artist_id, :tracklist_id, :verified_count, :artist_name, :start_time)
   end
 
   def find_song
     @song = Song.find(params[:id])
+  end
+
+  def signed_in
+    unless current_user
+      flash[:my_errors] = "Please Log In to create a new tracklist"
+      redirect_to new_user_session_path
+    end
   end
 
 

@@ -3,6 +3,10 @@ class Tracklist < ApplicationRecord
   belongs_to :festival
   belongs_to :user
   has_many :songs
+  validates :name, :img_url, :user_id, presence: true
+  validates :name, uniqueness: true
+  validates_associated :artist, :festival
+  
 
   def artist_attributes=(artist_attributes)  
     if Artist.find_by(name: artist_attributes[:name])
@@ -20,6 +24,14 @@ class Tracklist < ApplicationRecord
       festival = Festival.create(name: festival_attributes[:name], location: festival_attributes[:location], date: festival_attributes[:date])
     end
     self.festival = festival
+  end
+
+  def self.recent_tracklists
+    self.all.last(5)
+  end
+
+  def order_by_tracklist_number
+    self.songs.sort_by {|song| song.tracklist_number}
   end
 
 end

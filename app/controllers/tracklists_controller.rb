@@ -1,6 +1,7 @@
 class TracklistsController < ApplicationController
     
     before_action :find_tracklist, only: [:show, :edit, :update, :destroy]
+    before_action :signed_in, only:[:new, :edit]
     def index
         @tracklists = Tracklist.all 
     end
@@ -15,11 +16,14 @@ class TracklistsController < ApplicationController
     end
 
     def create
-      #Validation Needs to be written
-
-      @tracklist = Tracklist.create(tracklist_params)
-      
-      redirect_to new_tracklist_song_path(@tracklist)
+      @tracklist = Tracklist.new(tracklist_params)
+      if @tracklist.valid?
+        @tracklist.save
+        redirect_to new_tracklist_song_path(@tracklist)
+      else
+        flash[:my_errors] = @tracklist.errors.full_messages
+        redirect_to new_tracklist_path 
+      end
     end
 
     def edit
@@ -48,6 +52,13 @@ class TracklistsController < ApplicationController
 
     def find_tracklist
       @tracklist = Tracklist.find(params[:id])
+    end
+
+    def signed_in
+      unless current_user
+        flash[:my_errors] = "Please Log In to create a new tracklist"
+        redirect_to new_user_session_path
+      end
     end
 
 end

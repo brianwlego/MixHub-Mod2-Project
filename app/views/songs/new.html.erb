@@ -10,15 +10,23 @@
   
 </div>
 <div>
-  <ol>
-    <% @tracklist.songs.each do |song|%>
-        <li><%= song.title %>[<%= song.artist_name%>]  -  <%= song.start_time%></li>
-    <%end%>
-  </ol>
+  <% @tracklist.order_by_tracklist_number.each do |song|%>
+      <p><%= song.tracklist_number %>.  <%= song.start_time%> - <%= song.title %>[<%= song.artist_name%>]   <%= button_to "Remove Song", tracklist_song_path(@tracklist, song), method: 'delete' %></p>
+  <%end%>
 </div>
 <p>Add Songs To Your Tracklist</p>
 
+<div>
+    <%if flash[:my_errors] %>
+      <% flash[:my_errors].each do |error| %><br>
+        <%= error %>
+      <%end%>
+    <%end%>
+  </div>
+
 <%= form_for @song, url: tracklist_songs_path(@tracklist) do |f| %>
+  <%= f.number_field :tracklist_number, placeholder: "Tracklist Number"%>
+  <br>
   <%= f.text_field :title, placeholder: "Song Title"%>
   <br>
   <%= f.text_field :artist_name, placeholder: "Original Artist of Song" %>

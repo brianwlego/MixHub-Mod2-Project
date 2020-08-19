@@ -22,9 +22,14 @@
             <li class="nav-item active">
               <a class="nav-link" href=<%= "#{new_tracklist_path}" %>> Create a Tracklist <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+            <li class="nav-item active">
+              <a class="nav-link" href=<%="#{new_user_session_path}"%>>Login</a>
             </li>
+            <% if current_user %>
+              <li class="nav-item active">
+                <a class="nav-link" href=<%="#{user_path(current_user)}"%>>My Profile</a>
+              </li>
+            <%end%>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -46,6 +51,13 @@
           </form>
         </div>
       </nav> 
+
+  <div>
+    <% if flash[:my_errors] %>
+          <%= flash[:my_errors]%>
+    <%end%>
+  </div>
+
     <%= yield %>
   </body>
 </html>
