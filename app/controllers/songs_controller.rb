@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   before_action :find_song, only: [:show, :destroy, :add_verify]
-  before_action :signed_in, only: [:new ]
+  before_action :signed_in, only: [:new]
 
   def index
     @songs = Song.all

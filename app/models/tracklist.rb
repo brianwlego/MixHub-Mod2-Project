@@ -33,5 +33,9 @@ class Tracklist < ApplicationRecord
   def order_by_tracklist_number
     self.songs.sort_by {|song| song.tracklist_number}
   end
+  
+  def add_like
+    self.likes += 1 
+  end
 
 end

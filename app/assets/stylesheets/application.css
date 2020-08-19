@@ -14,3 +14,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .drp_down_small {
+   font-weight: 300;
+   font-size: small;
+ }

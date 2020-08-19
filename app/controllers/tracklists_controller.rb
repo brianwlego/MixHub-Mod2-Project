@@ -1,6 +1,6 @@
 class TracklistsController < ApplicationController
     
-    before_action :find_tracklist, only: [:show, :edit, :update, :destroy]
+    before_action :find_tracklist, only: [:show, :edit, :update, :destroy, :like]
     before_action :signed_in, only:[:new, :edit]
     def index
         @tracklists = Tracklist.all 
@@ -43,6 +43,12 @@ class TracklistsController < ApplicationController
     #   @song_num = 1
     #   @song_num
     # end
+
+    def like
+      @tracklist.add_like
+      @tracklist.save
+      redirect_to tracklist_path(@tracklist)
+    end
 
     private
 

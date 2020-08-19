@@ -1,8 +1,13 @@
 <h1><%=@tracklist.name%></h1>
 <img src=<%="#{@tracklist.img_url}"%>>
+
+<embed type="video" src=<%="#{@tracklist.link}"%> width="250 height="200">
+
 <h3><%= link_to "Find this Recording Here", @tracklist.link %></h3>
 <h3><%=link_to @tracklist.festival.name, festival_path(@tracklist.festival) %></h3>
 <h3><%=link_to @tracklist.artist.name, artist_path(@tracklist.artist)%></h3> 
+<h4><%= button_to "Like", like_path(@tracklist), method: "put", class: "btn btn-primary" %> <span class="badge badge-primary badge-pill"><%=@tracklist.likes%></span> </h4>
+
 <ul class="list-group">
     <%@tracklist.order_by_tracklist_number.each do |song|%>
         <li class="list-group-item d-flex justify-content-between align-items-center"><%= "#{song.tracklist_number}. #{song.start_time} #{song.artist_name} - #{song.title}"%> <span class="badge badge-primary badge-pill"><%=song.verified_count%></span></li>

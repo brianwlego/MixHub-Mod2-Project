@@ -1,10 +1,6 @@
 <h1>Welcome to MixHub!</h1>
 
-<div class= "sign_out_btn">
-    <% if user_signed_in? %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: "delete", class: "btn btn-primary" %>
-    <%end%>
-</div>
+
 
 <% @recent_tracklists.each do |tracklist| %>
 
