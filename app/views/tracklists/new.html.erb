@@ -15,7 +15,7 @@
       <%= f.label :name %>
       <%= f.text_field :name, placeholder: "ex. Avicii at Ultra 2016" %>
     <br>
-      <%= f.label :link %>
+      <%= f.label "YouTube Link" %>
       <%= f.text_field :link, placeholder: "ex. https://www.youtube.com/avicii@ultra" %>
     <br>
       <%= f.label :img_url %>
@@ -57,7 +57,6 @@
         <%end%>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :likes, :value => "0" %>
       <br><br>
 
       <%= f.submit %>

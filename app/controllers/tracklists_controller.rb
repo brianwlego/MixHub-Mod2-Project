@@ -27,11 +27,19 @@ class TracklistsController < ApplicationController
     end
 
     def edit
+      @artists = Artist.all
+      @festivals = Festival.all 
     end
 
     def update
-      #Valitdation Needs to be written
       @tracklist.update(tracklist_params)
+      if @tracklist.valid?
+        @tracklist.save
+        redirect_to tracklist_path(@tracklist)
+      else
+        flash[:my_errors] = @tracklist.errors.full_messages
+        redirect_to edit_tracklist_path(@tracklist)
+      end
     end
 
     def destroy
@@ -39,16 +47,12 @@ class TracklistsController < ApplicationController
       redirect_to tracklists_path
     end
 
-    # def add_song_input_field
-    #   @song_num = 1
-    #   @song_num
-    # end
-
     def like
-      @tracklist.add_like
-      @tracklist.save
+      Like.create(user_id: current_user.id, tracklist_id: @tracklist.id)
       redirect_to tracklist_path(@tracklist)
     end
+
+
 
     private
 

@@ -1,8 +1,10 @@
 class Tracklist < ApplicationRecord
+
   belongs_to :artist
   belongs_to :festival
   belongs_to :user
   has_many :songs
+  has_many :likes
   validates :name, :img_url, :user_id, presence: true
   validates :name, uniqueness: true
   validates_associated :artist, :festival
@@ -34,8 +36,10 @@ class Tracklist < ApplicationRecord
     self.songs.sort_by {|song| song.tracklist_number}
   end
   
-  def add_like
-    self.likes += 1 
-  end
+  # if self.likes.include?(current_user) && @likes.include?(@tracklist)
 
+  def liked?(user)
+    !!self.likes.find{|like| like.user_id == user.id}
+  end
+    
 end

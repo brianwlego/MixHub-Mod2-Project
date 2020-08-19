@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
   resources :festivals 
   resources :artists 
-  put '/tracklists/:id/songs/:id/verify', to: 'songs#add_verify', as: 'verify'
+  put '/tracklists/:id/songs/:id/verify', to: 'songs#verify', as: 'verify'
   put '/tracklist/:id/like', to: 'tracklists#like', as: 'like'
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

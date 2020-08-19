@@ -1,19 +1,35 @@
+<% require 'youtube_embed' %>
+
 <h1><%=@tracklist.name%></h1>
 <img src=<%="#{@tracklist.img_url}"%>>
 
-<embed type="video" src=<%="#{@tracklist.link}"%> width="250 height="200">
+<%= YoutubeEmbed::Video.iframe(@tracklist.link)%>
 
 <h3><%= link_to "Find this Recording Here", @tracklist.link %></h3>
 <h3><%=link_to @tracklist.festival.name, festival_path(@tracklist.festival) %></h3>
 <h3><%=link_to @tracklist.artist.name, artist_path(@tracklist.artist)%></h3> 
-<h4><%= button_to "Like", like_path(@tracklist), method: "put", class: "btn btn-primary" %> <span class="badge badge-primary badge-pill"><%=@tracklist.likes%></span> </h4>
+<%if @tracklist.liked?(current_user) %>
+    <h4><%= button_to "Like", like_path(@tracklist), method: "put", class: "btn btn-primary", disabled: true %> <span class="badge badge-primary badge-pill"><%=@tracklist.likes.count%></span> </h4>
+<%else%>
+    <h4><%= button_to "Like", like_path(@tracklist), method: "put", class: "btn btn-primary" %> <span class="badge badge-primary badge-pill"><%=@tracklist.likes.count%></span> </h4>
+<%end%>
+<%if @tracklist.user == current_user%>
+    <p><%= link_to "Edit Songs", new_tracklist_song_path(@tracklist) %> </p>
+<%end%>
 
 <ul class="list-group">
     <%@tracklist.order_by_tracklist_number.each do |song|%>
-        <li class="list-group-item d-flex justify-content-between align-items-center"><%= "#{song.tracklist_number}. #{song.start_time} #{song.artist_name} - #{song.title}"%> <span class="badge badge-primary badge-pill"><%=song.verified_count%></span></li>
-        <%= button_to "Verify", verify_path(@tracklist, song), method: "put", class: "btn btn-primary" %> 
+        <li class="list-group-item d-flex justify-content-between align-items-center"><%= "#{song.tracklist_number}. #{song.start_time} #{song.artist_name} - #{song.title}"%> <span class="badge badge-primary badge-pill"><%=song.verifications.count%></span></li>
+        <% if song.verified?(current_user) %>
+            <%= button_to "Verify", verify_path(@tracklist, song), method: "put", class: "btn btn-primary", disabled: true %> 
+        <%else%>
+            <%= button_to "Verify", verify_path(@tracklist, song), method: "put", class: "btn btn-primary" %> 
+        <%end%>
     <%end%>
 </ul>
+
+
+
 
 
     

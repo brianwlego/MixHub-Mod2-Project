@@ -1,0 +1,28 @@
+
+
+<div>
+  <h1>Edit Tracklist</h1>
+  <div>
+    <%if flash[:my_errors] %>
+      <% flash[:my_errors].each do |error| %><br>
+        <%= error %>
+      <%end%>
+    <%end%>
+  </div>
+
+  <div>
+    <%= form_for @tracklist do |f| %>
+      <%= f.label "Edit Name" %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label "Edit Link" %>
+      <%= f.text_field :link%>
+      <br> 
+      <%= f.label "Edit Image" %>
+      <%= f.text_field :img_url%>
+  </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <br><br>
+    <%= f.submit %>
+  <%end%>
+</div>

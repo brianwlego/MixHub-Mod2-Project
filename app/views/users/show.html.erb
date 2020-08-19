@@ -1,5 +1,6 @@
 <h1>Your Profile</h1>
 
+<%= image_tag current_user.img_url%>
 
 <h3>Username: <%= current_user.username%></h3>
 
@@ -7,3 +8,4 @@
 
 <h4>Last Name: <%= current_user.last_name%></h4>
 
+<h4><%= link_to "Edit Profile", edit_user_path(current_user)%></h4>

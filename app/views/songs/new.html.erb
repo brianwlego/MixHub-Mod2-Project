@@ -34,10 +34,10 @@
   <%= f.text_field :start_time, placeholder: "00:00"%>
   <br>
   <%= f.hidden_field :tracklist_id, value: @tracklist.id %>
-  <%= f.hidden_field :verified_count, value: '0' %>
   <%= f.submit class:"btn btn-secondary"%>
 <%end%>
-
+<br>
+<br>
 <div>
   <%= button_to "Finished Adding Songs", tracklist_path(@tracklist), method: "get", class: "btn btn-primary" %>
 </div>

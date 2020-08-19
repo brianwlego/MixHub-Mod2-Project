@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show, :destroy, :add_verify]
+  before_action :find_song, only: [:show, :destroy, :verify]
   before_action :signed_in, only: [:new]
 
   def index
@@ -32,9 +32,8 @@ class SongsController < ApplicationController
     redirect_to new_tracklist_song_path(saved_tracklist)
   end
 
-  def add_verify
-    @song.add_verification
-    @song.save 
+  def verify
+    Verification.create(user_id: current_user.id, song_id: @song.id)
     redirect_to tracklist_path(@song.tracklist)
   end
 
@@ -54,6 +53,4 @@ class SongsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
-
-
 end
