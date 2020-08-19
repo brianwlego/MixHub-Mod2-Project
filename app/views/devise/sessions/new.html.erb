@@ -21,11 +21,11 @@
                                     <%= f.check_box :remember_me, class: "text-info", id: "remember-me" %>
                                     <%= f.label :remember_me, class: "text-info"%>
                                 <%end%>
-                                <div class="form-group">
-                                    <%= f.submit "Log in", class:"btn btn-info btn-md"  %>
-                                </div>
-                            <%end%>
-                    <div id= "register-link"            >
+                            <div class="form-group">
+                                <%= f.submit "Log in", class:"btn btn-info btn-md"  %>
+                            </div>
+                        <%end%>
+                    <div id= "register-link" >
                         <%= button_to "Sign Up", new_user_registration_path, class:"btn btn-secondary text-right" %>
                     </div> 
                 </div>
