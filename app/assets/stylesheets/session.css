@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("alesso_edc.jpg");
+    height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+    padding-top: 75px;
+    max-width: 600px;
+    height: 380px;
+    border: 1px solid #000000;
+    background-color: #222831;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    margin-top: -85px;
+  }
+
+  .text-info {
+      color: white !important;
+  }
+
+

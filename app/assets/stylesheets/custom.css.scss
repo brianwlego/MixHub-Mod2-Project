@@ -5,9 +5,17 @@
 }
 
 .navbar .brand { 
-    max-height: 40px;
-    max-width: 30%; 
-    overflow: visible;
-    padding-top: 0;
-    padding-bottom: 0; 
+    max-height: 40px !important;
+    max-width: 30% !important; 
+    overflow: visible !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; 
 }
+
+.img-responsive {
+    height: auto;
+    width: auto;
+    max-height: 72px;
+    max-width: 250px;
+}
+
