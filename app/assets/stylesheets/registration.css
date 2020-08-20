@@ -1,0 +1,19 @@
+body.registration-stuff {
+    margin: 0;
+    padding: 0;
+    background-image: url("alesso_edc.jpg"); 
+    height: 100vh;
+  }
+  #registration.container #registration-row #registration-column #registration-box {
+    padding-top: 75px;
+    max-width: 600px;
+    height: 500px;
+    border: 1px solid #000000;
+    background-color: #222831;
+  }
+  #registration .container #registration-row #registration-column #registration-box #registration-form {
+    padding: 20px;
+  }
+  #registration .container #registration-row #registration-column #registration-box #registration-form {
+    margin-top: -85px;
+  }

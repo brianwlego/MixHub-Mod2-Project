@@ -1,9 +1,12 @@
-<h1>All Tracklists</h1>
-
-<div class = 'tracklist'> 
-    <ul>
-    <%@tracklists.each do |tracklist| %>
-        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
-    <% end %>
-    </ul>
+<div class="index-trklst-container">
+    <div class="index-trklst-header">
+        <h1 class="index-header">All Tracklists</h1>
+    </div>    
+    <div class ="index-tracklist"> 
+        <ul class="list-group">
+            <%@tracklists.each do |tracklist| %>
+                <li class="trklst-single list-group-item"><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+            <% end %>
+        </ul>
+    </div>
 </div>

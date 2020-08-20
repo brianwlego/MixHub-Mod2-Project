@@ -7,7 +7,9 @@
   <h3><%= @tracklist.artist.name %></h3>
   <img id= "artist_image", src= <%="#{@tracklist.artist.img_url}"%> , width="250", height="250", alt= "This URL Appears To Be Broken" >
   <br>
-  
+</div>
+<div class="trklst-video-wrapper">
+  <%= YoutubeEmbed::Video.iframe(@tracklist.link)%>
 </div>
 <div>
   <% @tracklist.order_by_tracklist_number.each do |song|%>

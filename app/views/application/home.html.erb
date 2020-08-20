@@ -1,6 +1,14 @@
-<h1>Welcome to MixHub!</h1>
 
 
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Mixhub!</h1>
+    <p class="lead">Mixhub is a community based app where you can view and create tracklists to your favorite live recordings and DJ mixes.</p>
+    <% if !user_signed_in? %>
+        <hr class="my-4">
+        <p>If you want to create a tracklist make sure to sign up!</p>
+        <%= button_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg", method: 'get' %>
+    <%end%>
+</div>
 
 <% @recent_tracklists.each do |tracklist| %>
 

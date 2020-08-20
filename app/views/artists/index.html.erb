@@ -1,10 +1,11 @@
-<div class= "">
-  <h1>All Artists</h1>
-  <div class= "">
-    <ul>
+<div class= "index-trklst-container">
+  <div class="index-trklst-header">
+    <h1 class="index-header">All Artists</h1>
+  </div>    
+  <div class= "index-tracklist">
+    <ul class="list-group">
       <% @artists.each do |artist| %>
-        <li><%= link_to artist.name, artist_path(artist) %></li>
-        <br>
+        <li class="list-group-item trklst-single"><%= link_to artist.name, artist_path(artist) %></li>
       <% end %>
     </ul>
   </div>
