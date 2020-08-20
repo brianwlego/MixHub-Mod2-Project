@@ -1,14 +1,14 @@
-<h1>Artist Show Page</h1>
 
-<div class= "">
-    <img id= "artist_image", src= <%="#{@artist.img_url}"%> , width="250", height="250", alt= "This URL Appears To Be Broken" >  
-  <h3><%= @artist.name %></h3>
-  <br><br>
-  <div class= "">
-    <ul>
+<div class="show-container">
+  <div class="show-wrapper">
+    <div class="show-row-1">
+      <img id= "show-image", src= <%="#{@artist.img_url}"%> id="show-image", alt= "This URL Appears To Be Broken" >  
+      <h1 class="text-info"><%= @artist.name %></h1>
+    </div>
+    <h5 class="text-info">Tracklists</h5>
+    <ul class="list-group">
       <% @artist.tracklists.each do |tracklist| %>
-        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
-        <br>
+        <li class="list-group-item"><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
       <% end %>
     </ul>
   </div>

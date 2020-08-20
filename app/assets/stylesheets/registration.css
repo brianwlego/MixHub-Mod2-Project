@@ -4,10 +4,10 @@ body.registration-stuff {
     background-image: url("alesso_edc.jpg"); 
     height: 100vh;
   }
-  #registration.container #registration-row #registration-column #registration-box {
-    padding-top: 75px;
+  #registration .container #registration-row #registration-column #registration-box {
+    padding-top: 50px;
     max-width: 600px;
-    height: 500px;
+    height: 750px;
     border: 1px solid #000000;
     background-color: #222831;
   }

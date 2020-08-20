@@ -5,7 +5,7 @@
   <div class= "index-tracklist">
     <ul class="list-group">
       <% @artists.each do |artist| %>
-        <li class="list-group-item trklst-single"><%= link_to artist.name, artist_path(artist) %></li>
+        <li class="list-group-item"><%= link_to artist.name, artist_path(artist) %></li>
       <% end %>
     </ul>
   </div>

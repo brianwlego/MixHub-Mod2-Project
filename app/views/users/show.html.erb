@@ -1,11 +1,17 @@
-<h1>Your Profile</h1>
-
-<%= image_tag current_user.img_url%>
-
-<h3>Username: <%= current_user.username%></h3>
-
-<h4>First Name: <%= current_user.first_name%></h4>
-
-<h4>Last Name: <%= current_user.last_name%></h4>
-
-<h4><%= link_to "Edit Profile", edit_user_path(current_user)%></h4>
+<div class="show-container">
+  <div class="show-wrapper">
+    <div class="show-row-1">
+      <img src = <%= "#{current_user.img_url}" %> width="250", height="250">
+      <h1 class="text-info">Username: <%= current_user.username%></h3>
+      <h4 class="text-info">First Name: <%= current_user.first_name%></h4>
+      <h4 class="text-info">Last Name: <%= current_user.last_name%></h4>
+    </div>
+    <h6 class="text-info"><%= link_to "Edit Profile", edit_user_path(current_user)%></h6>
+    <h5 class="text-info">Tracklists</h5>
+    <ul class="list-group">
+      <% current_user.tracklists.each do |tracklist| %>
+        <li class="list-group-item"><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

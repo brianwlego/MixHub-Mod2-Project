@@ -1,0 +1,42 @@
+
+.trklst-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 120px auto 0 auto;
+  padding: 30px;
+  width: 600px;
+  height: auto;
+  border: 1px solid #000000;
+  background-color: #222831;
+}
+
+.trklst-form > input {
+  align-self: center;
+}
+
+.trklst-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.artist-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.festival-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.input-mysize { width: 400px }
+.input-numbersize { width: 50px }
+.new-song-form {
+  margin: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+}

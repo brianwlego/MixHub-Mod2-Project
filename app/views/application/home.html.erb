@@ -10,10 +10,13 @@
     <%end%>
 </div>
 
-<% @recent_tracklists.each do |tracklist| %>
-
-    <h4><img src= <%="#{tracklist.img_url}"%>, width = "250", height = "250"> <%= link_to tracklist.name, tracklist_path(tracklist)%></h4>
-
-<%end%> 
-
-
+    <div class="tracklist-icons">
+        <% @recent_tracklists.each do |tracklist| %>
+            <div class="home-icon-wrapper">
+                <a href=<%="#{tracklist_path(tracklist)}"%>>
+                    <img src=<%="#{tracklist.img_url}"%> id="icon-img">
+                </a>
+                <%= link_to tracklist.name, tracklist_path(tracklist), class: "icon-trklst-name" %>
+            </div>
+        <%end%> 
+    </div>

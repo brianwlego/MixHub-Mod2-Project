@@ -1,28 +1,29 @@
 
-
 <div>
-  <h1>Edit Tracklist</h1>
-  <div>
-    <%if flash[:my_errors] %>
-      <% flash[:my_errors].each do |error| %><br>
-        <%= error %>
-      <%end%>
+  <%if flash[:my_errors] %>
+    <% flash[:my_errors].each do |error| %><br>
+      <%= error %>
     <%end%>
-  </div>
+  <%end%>
+</div>
 
-  <div>
+ 
+  
+<div class="trklst-form"> 
+  <h1 class="text-info">Edit Tracklist</h1>
     <%= form_for @tracklist do |f| %>
-      <%= f.label "Edit Name" %>
-      <%= f.text_field :name %>
-      <br>
-      <%= f.label "Edit Link" %>
-      <%= f.text_field :link%>
-      <br> 
-      <%= f.label "Edit Image" %>
-      <%= f.text_field :img_url%>
-  </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <br><br>
-    <%= f.submit %>
+      <div class="trklst-form-wrapper">
+        <%= f.label "Edit Name", class: "text-info" %>
+        <%= f.text_field :name, class: "input-mysize"%>
+        <br>
+        <%= f.label "Edit Link", class: "text-info" %>
+        <%= f.text_field :link, class: "input-mysize" %>
+        <br> 
+        <%= f.label "Edit Image", class: "text-info" %>
+        <%= f.text_field :img_url, class: "input-mysize" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <br>
+      <%= f.submit %>
+      </div>
   <%end%>
 </div>

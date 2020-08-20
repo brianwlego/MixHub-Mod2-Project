@@ -1,8 +1,4 @@
-<div>
-
-  <h1>New Tracklist:</h1>
-
-  <div>
+<div class="form_errors">
     <%if flash[:my_errors] %>
       <% flash[:my_errors].each do |error| %><br>
         <%= error %>
@@ -10,57 +6,53 @@
     <%end%>
   </div>
 
-
-  <%= form_for @tracklist do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "ex. Avicii at Ultra 2016" %>
-    <br>
-      <%= f.label "YouTube Link" %>
-      <%= f.text_field :link, placeholder: "ex. https://www.youtube.com/avicii@ultra" %>
-    <br>
-      <%= f.label :img_url %>
-      <%= f.text_field :img_url, placeholder: "ex. https://www.nme.com/2018/04/Avicii.jpg" %>
-    <br><br>
-      
-      <h4>Artist Form</h4><br>
-      <%= f.fields_for :artist_attributes do |inner| %>
-        <%= inner.label :artist %>
-        <%= inner.text_field :name,placeholder: "Artist", list: "artists_autocomplete" %>
-          <datalist id= "artists_autocomplete">
-            <% @artists.each do |artist| %>
-              <option value="<%= artist.name %>">
-            <%end%>
-          </datalist><br>
-          <%= inner.label :img_url %>
-          <%= inner.text_field :img_url, placeholder:"Don't add if Artist already exists"%>
+<%# <div class="form-container">
+  <div class="form-wrapper"> %>
+<%= form_for @tracklist, :html => {:class => "trklst-form"} do |f| %>
+  <div class="trklst-form-wrapper">
+    <h1 class="form-header text-info">New Tracklist:</h1>
+    <%= f.label :name, class: "text-info" %>
+    <%= f.text_field :name, class: "input-mysize", placeholder: "ex. Avicii at Ultra 2016" %>
+    <%= f.label "YouTube Link", class: "text-info" %>
+    <%= f.text_field :link, class: "input-mysize", placeholder: "ex. https://www.youtube.com/avicii@ultra" %>
+    <%= f.label :img_url, class: "text-info" %>
+    <%= f.text_field :img_url, class: "input-mysize", placeholder: "ex. https://www.nme.com/2018/04/Avicii.jpg" %>
+  </div>
+  <div class="artist-form-wrapper">
+    <h4 class="form-header text-info">Artist Form</h4>
+    <%= f.fields_for :artist_attributes do |inner| %>
+      <%= inner.label :artist, class: "text-info" %>
+      <%= inner.text_field :name, class: "input-mysize",placeholder: "Artist", list: "artists_autocomplete" %>
+      <datalist id= "artists_autocomplete">
+        <% @artists.each do |artist| %>
+          <option value="<%= artist.name %>">
         <%end%>
-
-    <br>
-
-    <br>  
-    <h4>Festival Form</h4><br>
-    <br>
-      <%= f.fields_for :festival_attributes do |inner| %>
-        <%= inner.label :festival %>
-        <%= inner.text_field :name, placeholder: "Festival", list: "festivals_autocomplete" %>
-          <datalist id= "festivals_autocomplete">
-            <% @festivals.each do |festival| %>
-              <option value="<%= festival.name %>">
-            <%end%>
-          </datalist><br>
-          <br>
-          <%= inner.label :location  %>
-          <%= inner.text_field :location, placeholder: "ex. Miami"%>
-          <br>
-          <%= inner.label :date %>
-          <%= inner.date_field :date%>
+      </datalist>
+      <%= inner.label :img_url, class: "text-info" %>
+      <%= inner.text_field :img_url, class: "input-mysize", placeholder:"Don't add if Artist already exists"%>
+    <%end%>
+  </div>  
+  <div class="festival-form-wrapper">
+    <h4 class="form-header text-info">Festival Form</h4>
+    <%= f.fields_for :festival_attributes do |inner| %>
+      <%= inner.label :festival, class: "text-info"%>
+      <%= inner.text_field :name, class: "input-mysize", placeholder: "Festival", list: "festivals_autocomplete" %>
+      <datalist id= "festivals_autocomplete">
+        <% @festivals.each do |festival| %>
+          <option value="<%= festival.name %>">
         <%end%>
-      
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <br><br>
-
-      <%= f.submit %>
-  <%end%>
-</div>
+      </datalist>
+      <%= inner.label :location, class: "text-info"  %>
+      <%= inner.text_field :location, class: "input-mysize", placeholder: "ex. Miami"%>
+      <%= inner.label :date, class: "text-info" %>
+      <%= inner.date_field :date%>
+    <%end%>
+  </div>  
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Create Tracklist", style: "align-self: center;" %>
+<%end%>
+    
+  <%# </div>
+</div> %>
 
 

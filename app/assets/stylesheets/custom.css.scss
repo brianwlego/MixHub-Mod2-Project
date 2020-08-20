@@ -1,8 +1,22 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+body {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    margin: 55px 0 0 0;
+    background-image: url("alesso_edc.jpg");
+    background-size: cover;
+}
+
 .navbar {
     background-color: #222831 !important;
     height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
 }
 
 .navbar .brand { 
@@ -26,11 +40,73 @@
     justify-content: center;
 }
 
+.trklst-col-info {
+    max-width: 600px;
+    height: 380px;
+    border: 1px solid #000000;
+    background-color: #222831;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#trklst-name-h1 {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid grey;
+}
+.header-trklst-info {
+    border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+}
+
+.header-trklst-info {
+    color: white;
+    padding-left: 10px;
+}
+.trklst-festival-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trklst-artist-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trklst-like-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trklst-like-button {
+    margin-left: 10px;
+}
+.trklst-like-count {
+    margin-right: 10px;
+}
+.trklst-edit-link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #trklst-img {
     max-width: 300px;
     max-height: 300px;
-    
-    
+    margin: 0 auto 0 auto;
+}
+
+.verify-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.verify-button {
+    margin: 5px;
+}
+.verify-count {
+    margin: 5px;
 }
 
 .outer-container {
@@ -44,14 +120,25 @@
 }
 
 .trklst-col-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
     margin: 30px;
-    
 }
 
-.verify-button {
-    position: relative;
-
+.song-list-wrapper {
+    max-width: 650px;
+    // z-index: 1;
 }
+
+.new-song-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 
 
 // INDEX TRKLST 
@@ -60,13 +147,45 @@
 .index-trklst-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-image: url("alesso_edc.jpg"); 
+    align-items: center; 
 }
 .index-trklst-header {
     padding: 30px;
 }
+.index-tracklist {
+    width: 300px;
+}
 .index-header {
     color: white;
     font-weight: 500;
+}
+
+.tracklist-icons {
+    padding: 20px;
+    background: #e9ecefc9;
+    display: flex;
+    justify-content: space-evenly;
+}
+.home-icon-wrapper {
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    // border: 1px solid #000000;
+    // background-color: #222831;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#icon-img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.icon-trklst-name {
+    color: black;
+    font-weight: 500;
+    display: inline-block;
 }

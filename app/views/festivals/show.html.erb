@@ -1,18 +1,16 @@
-<h1>Artist Show Page</h1>
 
-<div class= "">
-  
-  <h3><%= @festival.name %></h3>
-  <br>
-  <h4><%= @festival.date %></h4>
-  <br>
-  <h4><%= @festival.location %></h4>
-  <div class= "">
-    <ul>
-      <% @festival.tracklists.each do |tracklist| %>
-        <li><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
-        <br>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<div class="show-container">
+  <div class="show-wrapper">
+    <div class="show-row-1">
+      <h1 class="text-info"><%= @festival.name %></h1>
+      <h5 class="text-info"><%= @festival.date.strftime("%d of %B, %Y") %></h5>
+      <h5 class="text-info"><%= @festival.location %></h5>
+    </div>
+    <h5 class="text-info">Tracklists</h5>
+      <ul class="list-group">
+        <% @festival.tracklists.each do |tracklist| %>
+          <li class="list-group-item"><%= link_to tracklist.name, tracklist_path(tracklist) %></li>
+        <% end %>
+      </ul>
+  </div>    
+</div>      

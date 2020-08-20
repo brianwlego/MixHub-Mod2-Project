@@ -1,23 +1,3 @@
-
-<div>
-  <h3><%= @tracklist.name %></h3>
-  <h4><%= @tracklist.festival.location %></h4>
-  <h4><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></h4>
-  <br>
-  <h3><%= @tracklist.artist.name %></h3>
-  <img id= "artist_image", src= <%="#{@tracklist.artist.img_url}"%> , width="250", height="250", alt= "This URL Appears To Be Broken" >
-  <br>
-</div>
-<div class="trklst-video-wrapper">
-  <%= YoutubeEmbed::Video.iframe(@tracklist.link)%>
-</div>
-<div>
-  <% @tracklist.order_by_tracklist_number.each do |song|%>
-      <p><%= song.tracklist_number %>.  <%= song.start_time%> - <%= song.title %>[<%= song.artist_name%>]   <%= button_to "Remove Song", tracklist_song_path(@tracklist, song), method: 'delete' %></p>
-  <%end%>
-</div>
-<p>Add Songs To Your Tracklist</p>
-
 <div>
     <%if flash[:my_errors] %>
       <% flash[:my_errors].each do |error| %><br>
@@ -26,20 +6,49 @@
     <%end%>
   </div>
 
-<%= form_for @song, url: tracklist_songs_path(@tracklist) do |f| %>
-  <%= f.number_field :tracklist_number, placeholder: "Tracklist Number"%>
-  <br>
-  <%= f.text_field :title, placeholder: "Song Title"%>
-  <br>
-  <%= f.text_field :artist_name, placeholder: "Original Artist of Song" %>
-  <br>
-  <%= f.text_field :start_time, placeholder: "00:00"%>
-  <br>
-  <%= f.hidden_field :tracklist_id, value: @tracklist.id %>
-  <%= f.submit class:"btn btn-secondary"%>
-<%end%>
-<br>
-<br>
-<div>
-  <%= button_to "Finished Adding Songs", tracklist_path(@tracklist), method: "get", class: "btn btn-primary" %>
+<% require 'youtube_embed' %>
+
+<div class= "outer-container">
+    <div class="trklst-col-1">
+        <img id="trklst-img" src=<%="#{@tracklist.img_url}"%>>
+        <div class="trklst-col-info">
+            <h1 class="index-header" id="trklst-name-h1"><%= @tracklist.name%></h1>
+            <h4 class="header-trklst-info">Location</h4>
+            <div class="trklst-festival-info-wrapper">
+                <%=link_to "#{@tracklist.festival.name} - #{@tracklist.festival.location}", festival_path(@tracklist.festival), class: "text-info" %>
+                <p class="text-info"><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></p>
+            </div>
+            <h4 class="header-trklst-info">Artist</h4>
+            <div class="trklst-artist-info-wrapper">
+                <%=link_to @tracklist.artist.name, artist_path(@tracklist.artist), class: "text-info"%>
+            </div>   
+        </div>
+    </div>
+
+    <div class="trklst-col-2">
+        <div class="trklst-video-wrapper">
+            <%= YoutubeEmbed::Video.iframe(@tracklist.link)%>
+        </div>
+        <div class="song-list-wrapper">
+            <ul class="list-group">
+                <% @tracklist.order_by_tracklist_number.each do |song|%>
+                  <li class="list-group-item new-song-list"><%= song.tracklist_number %>.  <%= song.start_time%> - <%= song.title %>[<%= song.artist_name%>]   <%= button_to "Remove Song", tracklist_song_path(@tracklist, song), method: 'delete' %></li>
+                <%end%>
+            </ul>
+        </div>
+        <div class="new-song-form">
+          <%= form_for @song, url: tracklist_songs_path(@tracklist) do |f| %>
+            <%= f.number_field :tracklist_number, class: "input-numbersize", placeholder: "ex.1"%>
+            <%= f.text_field :start_time, class: "input-numbersize", placeholder: "00:00"%>
+            <%= f.text_field :title, style: "width: 300px", placeholder: "Song Title"%>
+            <%= f.text_field :artist_name, style: "width: 110px", placeholder: "Original Artist" %>
+            <%= f.hidden_field :tracklist_id, value: @tracklist.id %>
+            <%= f.submit class:"btn btn-secondary"%>
+          <%end%>
+        </div>
+        <%= button_to "Finished Adding Songs", tracklist_path(@tracklist), method: "get", class: "btn btn-primary" %>
+    </div>
 </div>
+  
+
+
