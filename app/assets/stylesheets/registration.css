@@ -5,9 +5,10 @@ body.registration-stuff {
     height: 100vh;
   }
   #registration .container #registration-row #registration-column #registration-box {
-    padding-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
     max-width: 600px;
-    height: 750px;
+    height: auto;
     border: 1px solid #000000;
     background-color: #222831;
   }

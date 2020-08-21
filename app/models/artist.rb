@@ -4,5 +4,8 @@ class Artist < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
 
+    def self.alphabetical
+        self.all.sort_by {|artist| artist.name }
+    end
     
 end
