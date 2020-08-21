@@ -1,18 +1,27 @@
-<h1>Edit Your Profile</h1>
+<div class="form-errors">
+    <%if flash[:my_errors] %>
+        <% flash[:my_errors].each do |error| %>
+        <h6 class="text-info"><%= error %></h6>
+        <br>
+        <%end%>
+    <%end%>
+</div>
 
-<%= form_for @user do |f|%>
-    <%= f.label :username %>
-    <%= f.text_field :username %> <br>
 
-    <%= f.label :first_name%>
-    <%= f.text_field :first_name %> <br>
-
-    <%= f.label :last_name%>
-    <%= f.text_field :last_name %> <br>
-
-    <%= f.label :img_url%>
-    <%= f.text_field :img_url %> <br>
-
-    <%=f.submit "Update"%>
-
-<%end%>
+<div class="trklst-form">
+    <h1 class="text-info">Edit Your Profile</h1>
+    <%= form_for @user do |f|%>
+        <div class="trklst-form-wrapper">
+            <label for="username" class="text-info" >Edit: Username</label>
+            <%= f.text_field :username, class: "input-mysize" %> 
+            <label for="first_name" class="text-info" >Edit: First Name</label>
+            <%= f.text_field :first_name, class: "input-mysize"%> 
+            <label for="last_name" class="text-info" >Edit: Last Name</label>
+            <%= f.text_field :last_name, class: "input-mysize" %> 
+            <label for="img_url" class="text-info" >Edit: Image URL</label>
+            <%= f.text_field :img_url, class: "input-mysize" %> 
+            <br>
+            <%=f.submit "Update"%>
+        </div>
+    <%end%>
+</div>

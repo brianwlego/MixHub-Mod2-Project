@@ -16,23 +16,31 @@
 }
 
 .trklst-form-wrapper {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 .artist-form-wrapper {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 .festival-form-wrapper {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
+.form-header {
+  margin-top: 10px;
+}
+
+
 .input-mysize { width: 400px }
 .input-numbersize { width: 50px }
 .new-song-form {

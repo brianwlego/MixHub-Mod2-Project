@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_210126) do
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.integer "tracklist_id"
-    t.integer "verified_count"
     t.string "artist_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

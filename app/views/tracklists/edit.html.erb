@@ -1,14 +1,13 @@
 
-<div>
+<div class="form-errors">
   <%if flash[:my_errors] %>
-    <% flash[:my_errors].each do |error| %><br>
-      <%= error %>
+    <% flash[:my_errors].each do |error| %>
+      <h6 class="text-info"><%= error %></h6>
+      <br>
     <%end%>
   <%end%>
 </div>
 
- 
-  
 <div class="trklst-form"> 
   <h1 class="text-info">Edit Tracklist</h1>
     <%= form_for @tracklist do |f| %>
