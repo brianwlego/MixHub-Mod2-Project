@@ -5,14 +5,16 @@
         <img id="trklst-img" src=<%="#{@tracklist.img_url}"%>>
         <div class="trklst-col-info">
             <h1 class="index-header" id="trklst-name-h1"><%= @tracklist.name%></h1>
+            <h4 id="trklst-name-h3">Made By: <%=@tracklist.user.username%></h4>
             <h4 class="header-trklst-info">Location</h4>
             <div class="trklst-festival-info-wrapper">
-                <%=link_to "#{@tracklist.festival.name} - #{@tracklist.festival.location}", festival_path(@tracklist.festival), class: "text-info" %>
-                <p class="text-info"><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></p>
+                <%=link_to "#{@tracklist.festival.name} - #{@tracklist.festival.location}", festival_path(@tracklist.festival), class: "text-info", style: "font-size: smaller;" %>
+                <p class="text-info" style="font-size: small;
+                margin-bottom: 0;"><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></p>
             </div>
             <h4 class="header-trklst-info">Artist</h4>
             <div class="trklst-artist-info-wrapper">
-                <%=link_to @tracklist.artist.name, artist_path(@tracklist.artist), class: "text-info"%>
+                <%=link_to @tracklist.artist.name, artist_path(@tracklist.artist), class: "text-info", style: "font-size: smaller;" %>
             </div> 
             <div class="trklst-like-wrapper">
                 <div class="trklst-like-button">

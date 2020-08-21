@@ -1,11 +1,11 @@
 <div class="form-errors">
   <%if flash[:my_errors] %>
     <% flash[:my_errors].each do |error| %>
-      <h6 class="text-info"><%= error %> - </h6>
+      <h6 class="text-info"> -<%= error %>- </h6>
       <br>
     <%end%>
   <%end%>
-</div>
+</div> 
 
 <% require 'youtube_embed' %>
 
@@ -16,8 +16,9 @@
             <h1 class="index-header" id="trklst-name-h1"><%= @tracklist.name%></h1>
             <h4 class="header-trklst-info">Location</h4>
             <div class="trklst-festival-info-wrapper">
-                <%=link_to "#{@tracklist.festival.name} - #{@tracklist.festival.location}", festival_path(@tracklist.festival), class: "text-info" %>
-                <p class="text-info"><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></p>
+                <%=link_to "#{@tracklist.festival.name} - #{@tracklist.festival.location}", festival_path(@tracklist.festival), class: "text-info", style: "font-size: smaller;" %>
+                <p class="text-info" style="font-size: small;
+                margin-bottom: 0;" ><%= @tracklist.festival.date.strftime("%d of %B, %Y") %></p>
             </div>
             <h4 class="header-trklst-info">Artist</h4>
             <div class="trklst-artist-info-wrapper">
@@ -33,7 +34,7 @@
         <div class="song-list-wrapper">
             <ul class="list-group">
                 <% @tracklist.order_by_tracklist_number.each do |song|%>
-                  <li class="list-group-item new-song-list"><%= song.tracklist_number %>.  <%= song.start_time%> - <%= song.title %>[<%= song.artist_name%>]   <%= button_to "Remove Song", tracklist_song_path(@tracklist, song), method: 'delete' %></li>
+                  <li class="list-group-item new-song-list"><%= song.tracklist_number %>.  <%= song.start_time%>  <%= song.artist_name%> - <%= song.title %>   <%= button_to "Remove Song", tracklist_song_path(@tracklist, song), method: 'delete' %></li>
                 <%end%>
             </ul>
         </div>

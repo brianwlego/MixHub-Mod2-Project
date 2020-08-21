@@ -9,7 +9,7 @@
         <%= button_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg", method: 'get' %>
     <%end%>
 </div>
-
+    <h3 id="recent-trklist-header" class="text-info">Recent Tracklists:</h3>
     <div class="tracklist-icons">
         <% @recent_tracklists.each do |tracklist| %>
             <div class="home-icon-wrapper">
