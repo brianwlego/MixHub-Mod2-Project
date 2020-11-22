@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
   before_action :find_user
-  def show
-    
-  end
+  def show; end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
     @user.update(user_params)
@@ -20,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:username, :first_name, :last_name, :img_url)
+    params.require(:user).permit(:username, :first_name, :last_name, :img_url)
   end
-
 end

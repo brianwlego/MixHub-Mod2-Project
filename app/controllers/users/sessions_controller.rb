@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  
-
   # GET /resource/sign_in
   def new
     super
@@ -18,8 +16,7 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
-  def show 
-  end
+  def show; end
 
   # protected
 

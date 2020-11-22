@@ -10,84 +10,83 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_210126) do
-
-  create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.text "img_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_200_819_210_126) do
+  create_table 'artists', force: :cascade do |t|
+    t.string 'name'
+    t.text 'img_url'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "festivals", force: :cascade do |t|
-    t.string "name"
-    t.datetime "date"
-    t.string "location"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'festivals', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'date'
+    t.string 'location'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "tracklist_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tracklist_id"], name: "index_likes_on_tracklist_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+  create_table 'likes', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'tracklist_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['tracklist_id'], name: 'index_likes_on_tracklist_id'
+    t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
-  create_table "songs", force: :cascade do |t|
-    t.string "title"
-    t.integer "tracklist_id"
-    t.string "artist_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "start_time"
-    t.integer "tracklist_number"
-    t.index ["tracklist_id"], name: "index_songs_on_tracklist_id"
+  create_table 'songs', force: :cascade do |t|
+    t.string 'title'
+    t.integer 'tracklist_id'
+    t.string 'artist_name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'start_time'
+    t.integer 'tracklist_number'
+    t.index ['tracklist_id'], name: 'index_songs_on_tracklist_id'
   end
 
-  create_table "tracklists", force: :cascade do |t|
-    t.string "name"
-    t.integer "artist_id"
-    t.integer "festival_id"
-    t.integer "user_id"
-    t.text "link"
-    t.text "img_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_tracklists_on_artist_id"
-    t.index ["festival_id"], name: "index_tracklists_on_festival_id"
-    t.index ["user_id"], name: "index_tracklists_on_user_id"
+  create_table 'tracklists', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'artist_id'
+    t.integer 'festival_id'
+    t.integer 'user_id'
+    t.text 'link'
+    t.text 'img_url'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['artist_id'], name: 'index_tracklists_on_artist_id'
+    t.index ['festival_id'], name: 'index_tracklists_on_festival_id'
+    t.index ['user_id'], name: 'index_tracklists_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username"
-    t.text "img_url"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'username'
+    t.text 'img_url'
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  create_table "verifications", force: :cascade do |t|
-    t.integer "song_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["song_id"], name: "index_verifications_on_song_id"
-    t.index ["user_id"], name: "index_verifications_on_user_id"
+  create_table 'verifications', force: :cascade do |t|
+    t.integer 'song_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['song_id'], name: 'index_verifications_on_song_id'
+    t.index ['user_id'], name: 'index_verifications_on_user_id'
   end
 
-  add_foreign_key "likes", "tracklists"
-  add_foreign_key "likes", "users"
-  add_foreign_key "verifications", "songs"
-  add_foreign_key "verifications", "users"
+  add_foreign_key 'likes', 'tracklists'
+  add_foreign_key 'likes', 'users'
+  add_foreign_key 'verifications', 'songs'
+  add_foreign_key 'verifications', 'users'
 end

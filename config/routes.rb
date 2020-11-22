@@ -9,13 +9,13 @@ Rails.application.routes.draw do
 
   root to: 'application#home'
 
-  resources :tracklists do 
-    resources :songs 
+  resources :tracklists do
+    resources :songs
   end
-  resources :festivals 
-  resources :artists 
+  resources :festivals
+  resources :artists
   put '/tracklists/:id/songs/:id/verify', to: 'songs#verify', as: 'verify'
   put '/tracklist/:id/like', to: 'tracklists#like', as: 'like'
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, only: %i[show edit update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

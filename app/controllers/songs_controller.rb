@@ -1,13 +1,12 @@
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show, :destroy, :verify]
+  before_action :find_song, only: %i[show destroy verify]
   before_action :signed_in, only: [:new]
 
   def index
     @songs = Song.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @song = Song.new
@@ -17,16 +16,15 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.valid?
-      @song.save 
+      @song.save
       redirect_to new_tracklist_song_path(@song.tracklist)
     else
       flash[:my_errors] = @song.errors.full_messages
       redirect_to new_tracklist_song_path(@song.tracklist)
     end
   end
-  
 
-  def destroy 
+  def destroy
     saved_tracklist = @song.tracklist
     @song.destroy
     redirect_to new_tracklist_song_path(saved_tracklist)
@@ -49,7 +47,7 @@ class SongsController < ApplicationController
 
   def signed_in
     unless current_user
-      flash[:my_errors] = "Please Log In to create a new tracklist"
+      flash[:my_errors] = 'Please Log In to create a new tracklist'
       redirect_to new_user_session_path
     end
   end

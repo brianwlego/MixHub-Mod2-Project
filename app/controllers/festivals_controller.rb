@@ -1,5 +1,4 @@
 class FestivalsController < ApplicationController
-
   def index
     @festivals = Festival.all
   end
@@ -7,5 +6,4 @@ class FestivalsController < ApplicationController
   def show
     @festival = Festival.find(params[:id])
   end
-
 end
